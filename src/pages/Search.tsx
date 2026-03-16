@@ -33,26 +33,26 @@ const Search = () => {
   }, [query, handleSearch]);
 
   return (
-    <div className="min-h-screen pt-28 pb-20">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 overflow-hidden">
-        <div className="max-w-3xl mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-8 font-display">Search</h1>
-          <div className="relative">
-            <SearchIcon className="absolute left-6 top-1/2 -translate-y-1/2 text-zinc-500" size={24} />
+    <div className="min-h-screen pt-6 md:pt-8 pb-20">
+      <div className="max-w-screen-md mx-auto px-4 overflow-hidden">
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold mb-4">Search</h1>
+          <div className="flex items-center gap-3 h-12 px-4 rounded-xl bg-neutral-900 border border-neutral-800">
+            <SearchIcon className="text-neutral-500" size={18} />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Movies, TV Shows, and More"
-              className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-16 pr-14 text-xl focus:outline-none focus:bg-white/10 transition-all placeholder:text-zinc-600"
+              className="flex-1 bg-transparent outline-none text-sm placeholder:text-neutral-500"
               autoFocus
             />
             {query && (
               <button
                 onClick={() => setQuery('')}
-                className="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white"
+                className="text-neutral-500 hover:text-white"
               >
-                <X size={24} />
+                <X size={18} />
               </button>
             )}
           </div>
@@ -63,7 +63,7 @@ const Search = () => {
             <div className="w-10 h-10 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {results.map((movie) => (
               <PosterCard key={movie.id} movie={movie} />
             ))}
@@ -77,8 +77,8 @@ const Search = () => {
         )}
 
         {!query && (
-          <div className="py-10">
-            <p className="text-zinc-500 text-sm font-bold uppercase tracking-widest opacity-50">Discover something new</p>
+          <div className="mt-8">
+            <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest opacity-50">Discover something new</p>
           </div>
         )}
       </div>

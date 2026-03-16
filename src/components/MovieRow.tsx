@@ -15,7 +15,7 @@ export const PosterCard: React.FC<PosterCardProps> = ({ movie }) => {
   return (
     <Link 
       to={`/${movie.media_type || 'movie'}/${movie.id}`} 
-      className="flex-shrink-0 group snap-start w-[31%] min-w-[110px] md:min-w-[200px]"
+      className="flex-shrink-0 group snap-start w-[30%] sm:w-[22%] md:w-[18%] lg:w-[15%] min-w-[105px] md:min-w-[180px]"
     >
       <motion.div
         whileHover={{ scale: 1.04, y: -5 }}
@@ -64,7 +64,7 @@ export const MovieRow: React.FC<MovieRowProps> = ({ title, movies }) => {
 
   return (
     <section className="py-4 md:py-8 overflow-hidden">
-      <div className="max-w-screen-lg mx-auto px-4">
+      <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex items-center justify-between mb-3 md:mb-4">
           <h2 className="text-lg md:text-2xl font-bold tracking-tight text-white/90">
             {title}
@@ -89,7 +89,7 @@ export const MovieRow: React.FC<MovieRowProps> = ({ title, movies }) => {
 
         <div 
           ref={scrollRef}
-          className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth pb-3 scroll-snap-x"
+          className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth pb-3 snap-x snap-mandatory"
         >
           {movies.map((movie) => (
             <PosterCard key={movie.id} movie={movie} />

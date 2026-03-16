@@ -13,18 +13,14 @@ function cn(...inputs: ClassValue[]) {
 const Header = () => {
   const { user } = useAuth();
   const location = useLocation();
-  const isTransparent = location.pathname === '/' || location.pathname.startsWith('/movie/') || location.pathname.startsWith('/tv/');
 
   return (
     <header 
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 h-16 md:h-20 flex items-center justify-between px-4 md:px-16 transition-all duration-500",
-        isTransparent ? "bg-black/20 backdrop-blur-xl border-b border-white/5" : "bg-black border-b border-neutral-800"
-      )}
+      className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 transition-all duration-500 bg-transparent"
     >
       <div className="flex items-center gap-12">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 bg-white text-black rounded-lg flex items-center justify-center font-black transition-transform group-hover:scale-110">C</div>
+          <div className="w-10 h-10 bg-white text-black rounded-lg flex items-center justify-center font-black transition-transform group-hover:scale-110">C</div>
           <span className="text-xl font-bold tracking-tighter hidden sm:block font-display">CINESTREAM</span>
         </Link>
 
@@ -36,7 +32,7 @@ const Header = () => {
       </div>
 
       <div className="flex items-center gap-6">
-        <Link to="/search" className="text-zinc-400 hover:text-white transition-colors">
+        <Link to="/search" className="text-zinc-400 hover:text-white transition-colors opacity-80 hover:opacity-100">
           <Search size={20} />
         </Link>
         
@@ -47,7 +43,7 @@ const Header = () => {
         ) : (
           <button 
             onClick={() => signInWithGoogle()}
-            className="text-xs font-bold uppercase tracking-widest bg-white text-black px-5 py-2 rounded-full hover:bg-zinc-200 transition-colors"
+            className="text-sm font-bold bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors"
           >
             Sign In
           </button>
